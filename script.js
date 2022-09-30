@@ -1,36 +1,63 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// var characterLength = 128
-// var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-// var lowerCase = 'abcdefghijklmnopqrstuvwxyz';
-// var specialCharacters = '!@#$%^&*()';
-// var number = '0123456789';
 
+function generatePassword() {  //This function is linked to the HTML code so the rest of the code goes into this function//
 
-function generatePassword() {
-var userInput = window.prompt('Password must be between 8 to 128 characters');
+// Had to include 5 questions for the prompt//
+var passWordLength = prompt('How long do you want your password to be?');
+//use an if statement for the variables//
+var includeSpecialChar = confirm('would you like to add special characters?');
+var includeUpperCase = confirm('would you like to add uppercase characters?');
+var includeLowerCase = confirm('would you like to add lowercase characters?');
+var includeNumbers= confirm('would you like to add numbers characters?');
 
-var wantsLowerCase = window.confirm('Click OK to add lowercase');
-var wantsUpperCase = window.confirm('Click OK to add uppercase');
-var wantsNumbers = window.confirm('Click OK to add numbers');
-var wantsSpecialCharacters = window.confirm('Click OK to add special characters');
+var options = {   // made an object container with the variables  to add to generate password functon//
+    passWordLength: passWordLength,
+    includeUpperCase: includeUpperCase,
+    includeLowerCase: includeLowerCase,
+    includeSpecialChar: includeSpecialChar,
+    includeNumbers: includeNumbers
+}
 
+var possiblePassword = [];  // Made 2 new variables  to make empty arrays so we can add the 5 variables to them//
+var password = [];
 
-var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-var lowerCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+function selectRandomChar(array) {  //Made an array to be sure to always include at  least 1 of the chars from the variable//
+   var randomNumber = Math.floor(Math.random() * array.length); //Used math so it can randomly pick a char from the variable//
+   return array[randomNumber]; //gives us a random char from the array//
 }
 
 
+if(options.includeUpperCase) {  //This says if the user picks uppercase it will include the array for uppercase//
+  possiblePassword = possiblePassword.concat(includeUpperCase);  //concat adds an array to another exsisting array//
+  password.push(selectRandomChar(includeUpperCase)); // This pushes the function to the empty array//
+}
+if(options.includeLowerCase) { //And it just repeats 3 more times//
+    possiblePassword = possiblePassword.concat(includeLowerCase);
+    password.push(selectRandomChar(includeLowerCase)); 
+  }
+  if(options.includeSpecialChar) {
+    possiblePassword = possiblePassword.concat(includeSpecialChar);
+    password.push(selectRandomChar(includeSpecialChar)); 
+  }
+  if(options.includeNumbers) {
+    possiblePassword = possiblePassword.concat(includeNumbers);
+    password.push(selectRandomChar(includeNumbers)); 
+  }
 
 
 
 
-// window.prompt('How many characters would you like your password to be?');
-// window.confirm('Click OK to add special characters');
-// window.confirm('Click OK to add lower case');
-// window.confirm('Click OK to add upper case');
-// window.confirm('Click OK to add Numbers');
+// 4 password options //
+// Need a function to start the application //
+// var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+// var lowerCase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+// var numbers = ['0', '2', '3', '4', '5', '6', '7', '8', '9'];
+// var specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'];
+}
+
+
 
 
 
