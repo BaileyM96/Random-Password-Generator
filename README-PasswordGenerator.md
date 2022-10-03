@@ -13,8 +13,12 @@ and password.join("") to make the array into a string when it outputs the passwo
 
 ## Link to Website
 
+https://baileym96.github.io/Random-Password-Generator/
+
+
 ## License 
 
 N/A
 
 ## Screenshots
+![Random-Password-Generator](https://user-images.githubusercontent.com/108101478/193482873-cdfad5eb-22fb-48d9-a1c4-2f24a322ade5.jpg)
